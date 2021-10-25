@@ -17,16 +17,12 @@ print(soup.prettify())
 L=list(soup.select(".GameItemList .GameItemWrap"))
 print(len(L))
 
-
-
 table = soup.find("div", {"class": "GameItemList"})
 gl = table.find_all("div", {"class": "GameItemWrap"})
 
 results = soup.find(class="Content")
 game_elements = results.find_all("div", class_="GameItemList")
 
-#==========
-#test 
 """
 import requests
 from bs4 import BeautifulSoup
@@ -37,5 +33,6 @@ table = soup.find_all("table", {"class": "champion-overview__table"})
 tbody = table[1].find("tbody")
 tr = tbody.find_all("tr", {"class": "champion-overview__row"})
 """
+
 #https://www.scrapingbee.com/blog/selenium-python/
 #https://www.codetd.com/en/article/8416771
