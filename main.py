@@ -1,9 +1,11 @@
-import pandas as pd
 
+#usernames
 pl=["PIERR0 LA RAFALE", "Nobusuke", "TITO LA TORPILLE", "chtis sournois", "CharLoRamBo"]
 
 def modif(charac):
     return charac.replace(" ","+")
 
+#list of players for opgg
 plsearch=list(map(modif,pl))
-print(plsearch)
+
+import pandas as pd
