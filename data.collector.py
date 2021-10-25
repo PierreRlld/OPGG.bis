@@ -9,11 +9,16 @@ URL=fonc_url(plsearch[0])
 import requests
 from bs4 import BeautifulSoup
 
-test=requests.get("https://euw.op.gg/summoner/userName=PIERR0+LA+RAFALE")
+test=requests.get("https://euw.op.gg/summoner/userName=PIERR0%20LA%20RAFALE")
 
-page = requests.get(URL)
-soup = BeautifulSoup(page.text, "html.parser")
-print(soup)
+page = requests.get(URL).text
+soup = BeautifulSoup(page, "html.parser")
+print(soup.prettify())
+L=list(soup.select(".GameItemList .GameItemWrap"))
+print(len(L))
+
+
+
 table = soup.find("div", {"class": "GameItemList"})
 gl = table.find_all("div", {"class": "GameItemWrap"})
 
@@ -32,3 +37,5 @@ table = soup.find_all("table", {"class": "champion-overview__table"})
 tbody = table[1].find("tbody")
 tr = tbody.find_all("tr", {"class": "champion-overview__row"})
 """
+#https://www.scrapingbee.com/blog/selenium-python/
+#https://www.codetd.com/en/article/8416771
