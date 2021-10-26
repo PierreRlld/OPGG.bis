@@ -8,16 +8,18 @@ DRIVER_PATH = 'C:/chromedriver/chromedriver.exe'
 ser=Service(DRIVER_PATH)                #Because of a DeprecationWarning : "executable_path has been deprecated, please use in a Service Object"
 driver = webdriver.Chrome(service=ser)
 
-#functions for usernames ======
-pl=["PIERR0 LA RAFALE", "Nobusuke", "TITO LA TORPILLE", "chtis sournois", "CharLoRamBo"] 
-var=['Champion','Result','CS','CSmin','Kills','Deaths','Assists','KDA','GameID'] 
+#functions for usernames =================
 def modif(charac):
     return charac.replace(" ","%20")
-plsearch=list(map(modif,pl))    #list of players for opgg
 
 def fonc_url(username):
     return "https://euw.op.gg/summoner/userName="+username
 #print(fonc_url(plsearch[0]))
+
+#player list & dataframe variables =======
+player_list=["PIERR0 LA RAFALE", "Nobusuke", "TITO LA TORPILLE", "chtis sournois", "CharLoRamBo"] 
+var=['Champion','Result','CS','CSmin','Kills','Deaths','Assists','KDA','GameID'] 
+plsearch=list(map(modif,player_list))    #list of players for opgg
 
 # ======================================================== #
 
@@ -27,7 +29,7 @@ def updategames(username):
 
     driver.get(URL)
 
-    #1
+    #1 Cookies
     try : 
         cookies=driver.find_element(By.CLASS_NAME, 'css-1ey59fx')
         cookies.click()
