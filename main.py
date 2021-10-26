@@ -26,13 +26,14 @@ def SetUpdate(username):
         dftemp=pd.DataFrame(data=up,index=[len(up)],columns=var)
         dffin=df.append(dftemp,sort=False)
         dffin.set_index([i for i in range(1,len(dffin)+1)])
-        
+
         return dffin
 
 
 # test =======================
 test=updategames('Nobusuke')
 import pandas as pd
+pd.set_option('display.max_columns', None)
 var=['Champion','Result','CS','CSmin','Kills','Deaths','Assists','KDA','GameID']        #GameId=time/kda@champ
 testa=pd.DataFrame(data=test,index=[i for i in range(1,len(test)+1)],columns=var)
 testb=pd.DataFrame(data=[['Kennen', 'Lose', '279', 6.2, '5', '13', '2', '0.54', '45:33/0.54@Kennen']],index=[1],columns=var)
