@@ -1,4 +1,3 @@
-from main import pl, var
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -8,8 +7,10 @@ import time
 DRIVER_PATH = 'C:/chromedriver/chromedriver.exe'
 ser=Service(DRIVER_PATH)                #Because of a DeprecationWarning : "executable_path has been deprecated, please use in a Service Object"
 driver = webdriver.Chrome(service=ser)
-# ============
 
+#functions for usernames ======
+pl=["PIERR0 LA RAFALE", "Nobusuke", "TITO LA TORPILLE", "chtis sournois", "CharLoRamBo"] 
+var=['Champion','Result','CS','CSmin','Kills','Deaths','Assists','KDA','GameID'] 
 def modif(charac):
     return charac.replace(" ","%20")
 plsearch=list(map(modif,pl))    #list of players for opgg
@@ -21,7 +22,7 @@ def fonc_url(username):
 # ======================================================== #
 
 def updategames(username):
-    name=modif(username)
+    name=modif(username)    # vvv
     URL=fonc_url(name)   # URL SETUP
 
     driver.get(URL)
@@ -54,7 +55,12 @@ def updategames(username):
         lg=[]
         if game.find_element(By.CLASS_NAME,'GameType').text==gametype :
             lg.append(game.find_element(By.CLASS_NAME, 'ChampionName').text)    #champion
-            lg.append(game.find_element(By.CLASS_NAME, 'GameResult').text)  #result
+            res=game.find_element(By.CLASS_NAME, 'GameResult').text     #result
+            if res[0]=='D':
+                lg.append('Lose')
+            else :
+                lg.append('Victory')
+            #lg.append(game.find_element(By.CLASS_NAME, 'GameResult').text) : pb à cause du 'é'
 
             cs=game.find_element(By.CLASS_NAME, 'CS')               
             lg.append(cs.text[0:3])     #CS
@@ -75,7 +81,13 @@ def updategames(username):
     time.sleep(1) #sinon ferme dès que ça charge quand y'a rien après
     driver.quit()
 
-    print(L)
+    if len(L)==0:
+        print([None for i in range(len(var))])
+        return [None for i in range(len(var))]
+    else : 
+        print(L)
+        return(L)
 
-updategames('Nobusuke')
+#updategames('Nobusuke')
+#updategames('TITO LA TORPILLE')
 
