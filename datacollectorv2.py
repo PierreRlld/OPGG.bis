@@ -82,10 +82,10 @@ def updategames(username):
     driver.quit()
 
     if len(L)==0:
-        print([None for i in range(len(var))])
+        #print([None for i in range(len(var))])
         return [None for i in range(len(var))]
     else : 
-        print(L)
+        #print(L)
         return(L)
 
 #updategames('Nobusuke')
