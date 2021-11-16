@@ -2,6 +2,8 @@
 
 Objectif >> comme tolki 
 
+https://linogaliana-teaching.netlify.app/exogit/
+
 sources:
 - https://github.com/jlgre/opgg_scraper (non)
 - https://www.scrapingbee.com/blog/selenium-python/
