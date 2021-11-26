@@ -34,8 +34,8 @@ def SetUpdate(username):
 # test =======================
 test=updategames('Nobusuke')
 import pandas as pd
-pd.set_option('display.max_columns', None)
+pd.set_option('display.max_columns', None)  #afficher tab en entier
 testa=pd.DataFrame(data=test,index=[i for i in range(1,len(test)+1)],columns=var)
-testb=pd.DataFrame(data=[['Kennen', 'Lose', '279', 6.2, '5', '13', '2', '0.54', '45:33/0.54@Kennen']],index=[1],columns=var)
+testb=pd.DataFrame(data=[['Kennen', 'Lose', '279', 6.2, '5', '13', '2', '0.54', '45:33/0.54@Kennen']],index=[1],columns=var)    #ajouter une game en plus pour tester append
 testfin=testa.append(testb,sort=False)
 print(testfin)
