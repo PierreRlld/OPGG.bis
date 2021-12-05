@@ -1,7 +1,5 @@
 # OPGG.bis
 
-Objectif >> comme tolki 
-
 https://linogaliana-teaching.netlify.app/exogit/
 
 sources:
